@@ -3,21 +3,23 @@
       <Header />
       <AddTodo v-on:addTodo= "addTodo"/>
       <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo" />
+      <TodoItem v-bind:todo="todo"/>
   
   </div>
 </template>
 
 <script>
-import Header from './components/Layout/Header'
-import Todos from './components/Todos';
-import AddTodo from './components/AddTodo'
-
+import Header from './components/Layout/Header.vue'
+import Todos from './components/Todos.vue';
+import AddTodo from './components/AddTodo.vue'
+import TodoItem from './components/TodoItem.vue'
 export default {
   name: 'App',
   components: {
     Header,
     Todos,
-    AddTodo
+    AddTodo,
+    TodoItem
   }, 
   data: function(){
      return{
