@@ -1,9 +1,10 @@
 <template>
   <div id="app">
       <Header />
-      <AddTodo v-on:addTodo= "addTodo"/>
-      <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo" />
-      <TodoItem v-bind:todo="todo"/>
+      <AddTodo v-on:add-todo="addTodo"/>
+      <Todos v-bind:todos="todos" 
+      v-on:del-todo="deleteTodo" />
+      
   
   </div>
 </template>
@@ -12,18 +13,35 @@
 import Header from './components/Layout/Header.vue'
 import Todos from './components/Todos.vue';
 import AddTodo from './components/AddTodo.vue'
-import TodoItem from './components/TodoItem.vue'
+
+
 export default {
-  name: 'App',
+  name: 'App',   
   components: {
     Header,
     Todos,
     AddTodo,
-    TodoItem
+    
   }, 
-  data: function(){
+  data()  {
      return{
-       todos: [],
+       todos: [
+         {
+           id: 1,
+           title: "Todo One",
+           completed: false
+         },
+         {
+           id: 2,
+           title: "Todo Two",
+           completed: true
+         },
+         {
+           id: 3,
+           title: "Todo Three",
+           completed: false
+         }
+       ],
      }
   },
   methods: {
@@ -31,7 +49,7 @@ export default {
       this.todos = this.todos.filter(todo => todo.id !== id);
     },
     addTodo(newTodo){
-      this.todos= [...this.todo, newTodo]
+      this.todos = [ ...this.todos, newTodo]
     }
   },
   created(){
